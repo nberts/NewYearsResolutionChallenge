@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read 25 Books in 2025</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read More Books!📖</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --padding-standard: clamp(1rem, 5vw, 3rem);
+            --hero-height: clamp(400px, 60vh, 600px);
+            --h1-size: clamp(2rem, 5vw, 3.5rem);
+            --text-base: clamp(1rem, 2vw, 1.5rem);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -16,21 +24,24 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #2C2C2C;
-            background-color: #F5F5F5;
+            background-color: #6B8996;
+            overflow-x: hidden;
         }
 
         .navbar {
-            padding: 1.5rem;
-            background-color: white;
+            padding: var(--padding-standard);
+            background-color: rgb(250, 235, 211);
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
+            left: 0;
             z-index: 1000;
+            box-shadow: 5px 5px #;
         }
 
         .navbar-content {
-            max-width: 1200px;
+            max-width: min(1200px, 90%);
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -39,115 +50,211 @@
 
         .logo {
             font-weight: 600;
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
             color: #2C2C2C;
         }
 
         .hero {
-            height: 100vh;
+            height: var(--hero-height);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 1rem;
-            background-color: white;
+            padding: var(--padding-standard);
+            position: relative;
+            margin-top: 80px;
+            background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/154/070/original/bookshelf.jpg?1736103022'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(206, 192, 173, 0.643);
         }
 
         .hero-content {
-            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            max-width: min(800px, 90%);
+            width: 100%;
+            padding: 1rem;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: var(--h1-size);
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
 
         .accent {
-            color: #D4B483; /* Muted gold accent color */
+            color: #FFDD96;
+
         }
 
         .subtitle {
-            font-size: 1.2rem;
-            color: #8C8C8C;
+            font-size: var(--text-base);
+            color: #313C41;
             margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 600;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 1rem 2rem;
-            background-color: #D4B483;
-            color: white;
+            padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem);
+            background-color: #6B8996;
+            color: rgb(250, 235, 211);
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3)
         }
 
         .cta-button:hover {
             background-color: #C4A473;
+            color: #6B8996;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .features {
-            padding: 5rem 1rem;
-            background-color: #F5F5F5;
+            padding: var(--padding-standard);
+            background-color: rgb(250, 235, 211);
         }
 
         .features-grid {
-            max-width: 1200px;
+            max-width: min(1200px, 90%);
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            padding: var(--padding-standard);
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
+            background: #6B8996;
+            color: rgb(250, 235, 211);
+            padding: clamp(1.5rem, 3vw, 2rem);
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: #2C2C2C solid 1pt;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .feature-icon {
-            font-size: 2rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
 
+        .feature-card h3 {
+            font-size: 1.25rem;
+            padding-bottom: 8px;
+        }
+
         .progress-section {
-            padding: 5rem 1rem;
-            background-color: white;
+            padding: var(--padding-standard);
+            background-color: #AB8D6C;
             text-align: center;
         }
 
+        .progress-section h2 {
+            font-size: 24px;
+        }
+
         .progress-bar {
-            width: 80%;
-            max-width: 800px;
+            width: min(80%, 800px);
             height: 20px;
-            background-color: #F5F5F5;
-            border-radius: 10px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
             margin: 2rem auto;
             overflow: hidden;
+            border: #313C41 solid 1pt;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
         }
 
         .progress {
             width: 0%;
             height: 100%;
-            background-color: #D4B483;
+            background-color: #6B8996;
             transition: width 1.5s ease-in-out;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
+        footer {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 400;
+        }
 
+        footer a {
+            color: #FFDD96;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
             .features-grid {
-                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .hero-content {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                margin-top: 60px;
+            }
+            
+            .cta-button {
+                width: 90%;
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            :root {
+                --padding-standard: 4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .feature-card {
+                transition: none;
+            }
+            
+            .cta-button {
+                transition: none;
+            }
+        }
+
+        @supports not (clamp: 1rem) {
+            :root {
+                --padding-standard: 2rem;
+                --h1-size: 2.5rem;
+                --text-base: 1rem;
             }
         }
     </style>
@@ -155,7 +262,7 @@
 <body>
     <nav class="navbar">
         <div class="navbar-content">
-            <div class="logo">ReadingChallenge</div>
+            <div class="logo">📚 ReadMoreBooks</div>
             <a href="#join" class="cta-button">Join Now</a>
         </div>
     </nav>
@@ -168,6 +275,14 @@
         </div>
     </section>
 
+    <section class="progress-section">
+        <h2>Your Reading Progress</h2>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p>5 of 25 books completed</p>
+    </section>
+    
     <section class="features">
         <div class="features-grid">
             <div class="feature-card">
@@ -181,20 +296,14 @@
                 <p>Break down your yearly goal into achievable monthly targets</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">👥</div>
+                <div class="feature-icon">👓</div>
                 <h3>Join Community</h3>
                 <p>Connect with fellow readers and share your reading experiences</p>
             </div>
         </div>
     </section>
+<footer>Coded by <a class="link" href="https://github.com/nberts">Nina B.</a> for <a class="link" href="https://www.shecodes.io/">SheCodes</a> Monthly Challenge Jan. 2025</footeR>
 
-    <section class="progress-section">
-        <h2>Your Reading Progress</h2>
-        <div class="progress-bar">
-            <div class="progress"></div>
-        </div>
-        <p>0 of 25 books completed</p>
-    </section>
 
     <script>
         // Simple animation for progress bar
